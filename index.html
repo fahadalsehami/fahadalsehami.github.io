@@ -1,7 +1,467 @@
----
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
----
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fahad Alsehami: research and open code</title>
+<meta name="description" content="Research by Fahad Alsehami on AI for mental health that can be checked: certified emission of language-model claims, vision transformers on oriented cell complexes, and clinical speech recognition.">
+<meta name="author" content="Fahad Alsehami">
+<link rel="canonical" href="https://fahadalsehami.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fahad Alsehami">
+<meta property="og:title" content="Fahad Alsehami: research and open code">
+<meta property="og:description" content="Certified emission of language-model claims, vision transformers on oriented cell complexes, and clinical speech recognition.">
+<meta property="og:url" content="https://fahadalsehami.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#FBFCFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1624" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Fahad Alsehami",
+  "url": "https://fahadama.info",
+  "sameAs": [
+    "https://fahadalsehami.github.io/",
+    "https://github.com/fahadalsehami",
+    "https://linkedin.com/in/alfahadama",
+    "https://alsehami.substack.com"
+  ]
+}
+</script>
+<style>
+:root {
+  --paper: #FBFCFD;
+  --ink: #142033;
+  --muted: #586478;
+  --rule: #DCE2EA;
+  --mesh: #7E8DA3;
+  --pos: #0D7A78;
+  --neg: #B03A62;
+  --region: rgba(13, 122, 120, 0.10);
+  --measure: 44rem;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0F1624;
+    --ink: #E4E9F1;
+    --muted: #9AA7B9;
+    --rule: #26324A;
+    --mesh: #6A7A93;
+    --pos: #4CC2BC;
+    --neg: #EE7FA2;
+    --region: rgba(76, 194, 188, 0.13);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "STIX Two Text", "STIX Two", "Cambria", "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.62;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+}
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--pos) 65%, transparent);
+}
+a:hover { text-decoration-color: var(--pos); text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--pos); outline-offset: 3px; border-radius: 2px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--paper); padding: 0.4rem 0.7rem; z-index: 2; }
+
+.wrap { width: min(100% - 2rem, var(--measure)); margin-inline: auto; }
+.site-head {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  padding: 1.1rem 0 0.4rem;
+}
+.site-head .name { font-weight: 600; text-decoration: none; }
+.site-head nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; }
+
+figure.hero { margin: 0.5rem auto 0; width: min(100% - 2rem, 72rem); }
+.hero canvas { display: block; width: 100%; height: clamp(230px, 42vw, 480px); touch-action: pan-y; }
+.hero figcaption {
+  width: min(100%, var(--measure));
+  margin: 0.4rem auto 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.hero figcaption b { font-weight: 600; color: var(--ink); }
+.swatch { font-weight: 600; }
+.swatch.pos { color: var(--pos); }
+.swatch.neg { color: var(--neg); }
+
+h1 {
+  font-size: clamp(2.1rem, 1.55rem + 2.2vw, 2.9rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin: 2.6rem 0 0.8rem;
+}
+.lede { font-size: 1.3rem; line-height: 1.5; margin: 0; }
+h2 { font-size: 1.45rem; line-height: 1.25; font-weight: 600; margin: 3.6rem 0 1.3rem; }
+article { margin: 0 0 2.4rem; }
+h3 { font-size: 1.2rem; line-height: 1.38; font-weight: 400; margin: 0 0 0.2rem; }
+h3 strong { font-weight: 650; }
+.meta { font-style: italic; color: var(--muted); margin: 0 0 0.55rem; }
+article p { margin: 0 0 0.6rem; }
+.result {
+  border-left: 2px solid var(--pos);
+  padding-left: 0.9rem;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+dl.code { margin: 0; }
+dl.code div { margin: 0 0 1.35rem; }
+dl.code dt { font-weight: 600; }
+dl.code dd { margin: 0.1rem 0 0; }
+dl.code dd.stack { font-style: italic; color: var(--muted); }
+.site-foot { margin-top: 4rem; padding: 1.4rem 0 3rem; border-top: 1px solid var(--rule); }
+.site-foot p { margin: 0 0 0.4rem; }
+.small { font-size: 0.95rem; color: var(--muted); }
+
+@media (max-width: 34rem) {
+  body { font-size: 1.0625rem; }
+  .lede { font-size: 1.18rem; }
+  h2 { margin-top: 2.8rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the research</a>
+<header class="site-head">
+  <a class="name" href="./">Fahad Alsehami</a>
+  <nav aria-label="Elsewhere">
+    <a href="https://fahadama.info">About me</a>
+    <a href="https://github.com/fahadalsehami">GitHub</a>
+    <a href="https://alsehami.substack.com">Signal &amp; Symptom</a>
+  </nav>
+</header>
+
+<figure class="hero">
+  <canvas id="complex" role="img" aria-label="A slowly turning triangulated surface. One region is shaded, and its border edges are marked plus one in teal or minus one in rose, with a point tracing the border counterclockwise."></canvas>
+  <figcaption>
+    <b>Figure 1.</b> A triangulated surface as an oriented cell complex. The shaded region’s border is traced counterclockwise; each border edge counts <span class="swatch pos">+1</span> where its own orientation agrees with the trace and <span class="swatch neg">−1</span> where it runs against it. Perimeter builds on this: one signed pass along a region’s border gives its exact area, centroid and second moments.
+  </figcaption>
+</figure>
+
+<main id="main" class="wrap">
+  <h1>Fahad Alsehami</h1>
+  <p class="lede">Research on AI for mental health that can be checked: certifying which claims a language model may pass to a reader, transformers that see images as oriented cell complexes, and speech recognition that holds up in the clinic.</p>
+
+  <h2>Papers and manuscripts</h2>
+
+  <article>
+    <h3><strong>Certify the Gate, Not the Generator</strong>: Certified Emission of Language-Model Claims with Cell-Complex Verification</h3>
+    <p class="meta">Sole author. Manuscript, 2026.</p>
+    <p>Rather than trying to make a language model truthful, certify the gate that decides which of its claims reach a reader. The gate is calibrated with Learn-then-Test and betting p-values, and exact holonomy on a cell complex catches contradictions around cycles that pairwise checks miss.</p>
+    <p class="result">On 81,414 MedLFQA claims it passes 77.8% at a 3% unsupported rate and 92.5% at 5%, with no violation in 100 random splits, against 24.3–35.5% for conformal factuality.</p>
+  </article>
+
+  <article>
+    <h3><strong>CELLO</strong>: Vision Transformers on Oriented Cell Complexes with Certified Early Exits</h3>
+    <p class="meta">Sole author. Manuscript in preparation, 2026.</p>
+    <p>Each block passes messages between image patches, their adjacencies and 2&nbsp;×&nbsp;2 squares, so the model sees how patches are arranged, not only which belong together.</p>
+    <p class="result">89.54% on CIFAR-10 at about 0.1 GMACs, and 90.61% with LocalViT’s convolution, against at most 88.56% for ViT and HgVT (one seed so far). Early exits certified with Learn-then-Test cut multiply-adds 2.18× and raise measured throughput 1.81×.</p>
+  </article>
+
+  <article>
+    <h3><strong>Perimeter</strong>: region tokens from an oriented cell complex</h3>
+    <p class="meta">Sole author. Research in progress, 2026.</p>
+    <p>A vision transformer whose tokens are the regions of an oriented cell complex built for each image. One signed pass over the region borders recovers each region’s exact area, centroid and second moments, as in Figure&nbsp;1.</p>
+    <p class="result">In a CPU pilot on Imagewoof, region tokens beat patch tokens on all three seeds (64.7% vs 62.8% top-1) with 69% of their multiply-adds. An H100 study at 224 pixels is next.</p>
+  </article>
+
+  <h2>In progress</h2>
+
+  <article>
+    <h3><strong>Reading the Mind from the Body</strong></h3>
+    <p class="meta">Research proposal.</p>
+    <p>Feelings leave traces in the body: heart rhythm, voice, face, breath, skin and eyes. The study records them alongside deep-brain activity in people already undergoing epilepsy monitoring, maps which brain circuit drives which body signal, how strongly and how fast, and links each to the research dimensions of mental health (RDoC). The goal is an open readout model that learns from the brain, then runs on the body alone and says how certain it is.</p>
+  </article>
+
+  <h2>Benchmarks</h2>
+
+  <article>
+    <h3><strong><a href="https://huggingface.co/Medera/medera-bh-asr">Medera BH-ASR</a></strong>: speech recognition for behavioral-health conversations</h3>
+    <p class="meta">Open benchmark from Medera, on Hugging Face.</p>
+    <p>English and Arabic clinical speech: voice activity detection, diarization, per-region language identification and word-level fusion of several recognizers, with a verifier and a hallucination guard. Seven animated explainers, captioned in English and Arabic, walk through its safety numbers.</p>
+    <p class="result">Lowest word error rate of 13 recognizers on English mock consultations: 11.02% on PriMock57, level with Qwen3-ASR (p&nbsp;=&nbsp;0.15) and ahead of Whisper large-v3 (13.55%). Under a medication prompt it inserted no drug names, where the prompted recognizer alone inserted 71.</p>
+  </article>
+
+  <h2>Open code</h2>
+
+  <dl class="code">
+    <div>
+      <dt><a href="https://github.com/fahadalsehami/Interactive-Rag">Interactive-Rag</a></dt>
+      <dd>RDoC clinical analysis with retrieval-augmented generation: maps a presentation to RDoC constructs, retrieves passages from a Bedrock knowledge base, and has Claude write an analysis that cites them and asks a follow-up question.</dd>
+      <dd class="stack">Python, Streamlit, Amazon Bedrock</dd>
+    </div>
+    <div>
+      <dt><a href="https://github.com/fahadalsehami/multi-tasks-learning">multi-tasks-learning</a></dt>
+      <dd>Racial disparities in U.S. heart-disease mortality: CDC and census data joined by county, and a multi-task network that classifies disease and estimates age at death.</dd>
+      <dd class="stack">Python, pandas, PyTorch</dd>
+    </div>
+    <div>
+      <dt><a href="https://github.com/fahadalsehami/BoneAgePrediction">BoneAgePrediction</a></dt>
+      <dd>Age estimation from adult pubic symphysis images with ImageNet VGG16 features and a logistic-regression classifier.</dd>
+      <dd class="stack">Python, TensorFlow, scikit-learn</dd>
+    </div>
+  </dl>
+
+  <h2>Writing</h2>
+
+  <article>
+    <h3><strong><a href="https://alsehami.substack.com">Signal &amp; Symptom</a></strong></h3>
+    <p class="meta">Essays, since 2025.</p>
+    <p>On building, verifying and safely deploying AI in behavioral health, including <a href="https://alsehami.substack.com/p/the-epistemological-crisis-of-llms">“The Epistemological Crisis of LLMs in Psychiatry”</a>.</p>
+  </article>
+</main>
+
+<footer class="wrap site-foot">
+  <p>About me, my work at Medera and how to reach me: <a href="https://fahadama.info">fahadama.info</a>.</p>
+  <p class="small">Figure 1 is drawn live in your browser. <a href="https://github.com/fahadalsehami/fahadalsehami.github.io">Source of this page</a>.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var canvas = document.getElementById("complex");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* ---- the complex: a jittered grid on a gently curved sheet ---- */
+  var NX = 26, NY = 14, seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  var V = [];
+  for (var j = 0; j <= NY; j++) {
+    for (var i = 0; i <= NX; i++) {
+      var x = -1.6 + 3.2 * i / NX, y = -0.85 + 1.7 * j / NY;
+      if (i > 0 && i < NX && j > 0 && j < NY) {
+        x += (rnd() - 0.5) * 0.5 * 3.2 / NX;
+        y += (rnd() - 0.5) * 0.5 * 1.7 / NY;
+      }
+      V.push([x, y, 0]);
+    }
+  }
+  function id(i, j) { return j * (NX + 1) + i; }
+  var F = [];
+  for (j = 0; j < NY; j++) {
+    for (i = 0; i < NX; i++) {
+      var a = id(i, j), b = id(i + 1, j), c = id(i, j + 1), d = id(i + 1, j + 1);
+      if ((i + j) % 2 === 0) { F.push([a, b, d], [a, d, c]); } else { F.push([a, b, c], [b, d, c]); }
+    }
+  }
+  // orient every triangle counterclockwise in the plane
+  F.forEach(function (f) {
+    var p = V[f[0]], q = V[f[1]], r = V[f[2]];
+    if ((q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]) < 0) { var t = f[1]; f[1] = f[2]; f[2] = t; }
+  });
+  // every edge, oriented from its lower to its higher vertex index
+  var edgeSet = {}, E = [];
+  F.forEach(function (f) {
+    for (var k = 0; k < 3; k++) {
+      var u = Math.min(f[k], f[(k + 1) % 3]), v = Math.max(f[k], f[(k + 1) % 3]);
+      if (!edgeSet[u + "," + v]) { edgeSet[u + "," + v] = 1; E.push([u, v]); }
+    }
+  });
+  // the shaded region and its boundary, oriented as the boundary of the region
+  var cx = 0.38, cy = 0.02, rx = 0.62, ry = 0.42;
+  var count = {}, induced = {};
+  F.forEach(function (f) {
+    var mx = (V[f[0]][0] + V[f[1]][0] + V[f[2]][0]) / 3, my = (V[f[0]][1] + V[f[1]][1] + V[f[2]][1]) / 3;
+    if (Math.pow((mx - cx) / rx, 2) + Math.pow((my - cy) / ry, 2) >= 1) return;
+    for (var k = 0; k < 3; k++) {
+      var u = f[k], v = f[(k + 1) % 3], key = Math.min(u, v) + "," + Math.max(u, v);
+      count[key] = (count[key] || 0) + 1;
+      induced[key] = [u, v];
+    }
+  });
+  var next = {};
+  Object.keys(count).forEach(function (key) { if (count[key] === 1) next[induced[key][0]] = induced[key][1]; });
+  var start = +Object.keys(next)[0], cycle = [start], cur = next[start];
+  while (cur !== undefined && cur !== start && cycle.length < 200) { cycle.push(cur); cur = next[cur]; }
+  // sign of each border edge: +1 if the edge's own orientation agrees with the trace
+  var signs = cycle.map(function (u, k) { return u < cycle[(k + 1) % cycle.length] ? 1 : -1; });
+
+  /* ---- drawing ---- */
+  var colors = {};
+  function readColors() {
+    var s = getComputedStyle(document.documentElement);
+    ["--mesh", "--pos", "--neg", "--region", "--ink", "--paper"].forEach(function (n) { colors[n] = s.getPropertyValue(n).trim(); });
+  }
+  readColors();
+  var W = 0, H = 0, dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    fit();
+    if (!running) draw(lastT);
+  }
+
+  var P = new Array(V.length);
+  var D = 4.6, PITCH = 1.0, YAW = -0.3, SWING = 0.07, TILT = 0.1, scale = 1, centerY = 0;
+  // the sheet ripples slowly; phi is the phase of the ripple
+  function height(x, y, phi) {
+    return 0.17 * Math.sin(1.6 * x + 0.4 + 0.5 * Math.sin(phi)) * Math.cos(1.9 * y + 0.3 * Math.cos(phi)) +
+      0.06 * Math.sin(3.1 * x * y + phi);
+  }
+  function shape(phi) { for (var k = 0; k < V.length; k++) V[k][2] = height(V[k][0], V[k][1], phi); }
+  var yawOffset = 0, pitchOffset = 0, targetYaw = 0, targetPitch = 0;
+  function place(yaw, pitch, f, out) {
+    var cyaw = Math.cos(yaw), syaw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+    for (var k = 0; k < V.length; k++) {
+      var x = V[k][0], y = V[k][1], z = V[k][2];
+      var x1 = x * cyaw - y * syaw, y1 = x * syaw + y * cyaw;
+      var y2 = y1 * cp - z * sp, z2 = y1 * sp + z * cp;
+      var depth = D + y2, s = f / depth;
+      out[k] = [x1 * s, -z2 * s, depth];
+    }
+  }
+  // one scale for every angle the sheet can swing to, so the figure never clips or breathes
+  function fit() {
+    var tmp = new Array(V.length), minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (var yaw = YAW - SWING - TILT; yaw <= YAW + SWING + TILT + 1e-9; yaw += (SWING + TILT) / 6) {
+      for (var dp = -0.06; dp <= 0.061; dp += 0.06) {
+       for (var phi = 0; phi < Math.PI * 2; phi += Math.PI / 4) {
+        shape(phi);
+        place(yaw, PITCH + dp, 1, tmp);
+        for (var k = 0; k < tmp.length; k++) {
+          if (tmp[k][0] < minX) minX = tmp[k][0];
+          if (tmp[k][0] > maxX) maxX = tmp[k][0];
+          if (tmp[k][1] < minY) minY = tmp[k][1];
+          if (tmp[k][1] > maxY) maxY = tmp[k][1];
+        }
+       }
+      }
+    }
+    scale = Math.min((W - 12) / (maxX - minX), (H - 12) / (maxY - minY));
+    centerY = H / 2 - ((minY + maxY) / 2) * scale;
+  }
+  function project(t) {
+    var yaw = YAW + SWING * Math.sin(t * 0.00012) + yawOffset;
+    shape(t * 0.0005);
+    place(yaw, PITCH + pitchOffset, scale, P);
+    var dmin = Infinity, dmax = -Infinity;
+    for (var k = 0; k < P.length; k++) {
+      P[k][0] += W / 2;
+      P[k][1] += centerY;
+      if (P[k][2] < dmin) dmin = P[k][2];
+      if (P[k][2] > dmax) dmax = P[k][2];
+    }
+    return [dmin, dmax];
+  }
+
+  var lastT = 0;
+  function draw(t) {
+    lastT = t;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    if (W === 0 || H === 0) return;
+    var range = project(t), dmin = range[0], span = Math.max(range[1] - range[0], 1e-6);
+
+    // shaded region: fill the projected border polygon once
+    ctx.beginPath();
+    cycle.forEach(function (v, k) { if (k === 0) ctx.moveTo(P[v][0], P[v][1]); else ctx.lineTo(P[v][0], P[v][1]); });
+    ctx.closePath();
+    ctx.fillStyle = colors["--region"];
+    ctx.fill();
+
+    // the mesh, nearer edges darker, batched into a few opacity steps
+    var buckets = [[], [], [], [], [], []];
+    for (var k = 0; k < E.length; k++) {
+      var e = E[k], near = 1 - ((P[e[0]][2] + P[e[1]][2]) / 2 - dmin) / span;
+      buckets[Math.min(5, Math.floor(near * 6))].push(e);
+    }
+    ctx.lineWidth = 0.75;
+    ctx.strokeStyle = colors["--mesh"];
+    buckets.forEach(function (list, n) {
+      ctx.globalAlpha = 0.16 + n * 0.09;
+      ctx.beginPath();
+      list.forEach(function (e) { ctx.moveTo(P[e[0]][0], P[e[0]][1]); ctx.lineTo(P[e[1]][0], P[e[1]][1]); });
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+
+    // border edges in the color of their sign, with a chevron in the direction of the trace
+    ctx.lineWidth = 1.9;
+    ctx.lineCap = "round";
+    for (k = 0; k < cycle.length; k++) {
+      var p = P[cycle[k]], q = P[cycle[(k + 1) % cycle.length]];
+      var col = signs[k] > 0 ? colors["--pos"] : colors["--neg"];
+      ctx.strokeStyle = col;
+      ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke();
+      var mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2, ang = Math.atan2(q[1] - p[1], q[0] - p[0]);
+      ctx.save(); ctx.translate(mx, my); ctx.rotate(ang);
+      ctx.beginPath(); ctx.moveTo(-3, -3.2); ctx.lineTo(1.6, 0); ctx.lineTo(-3, 3.2);
+      ctx.lineWidth = 1.4; ctx.stroke(); ctx.restore();
+      ctx.lineWidth = 1.9;
+    }
+
+    // a point tracing the border counterclockwise
+    var pos = reduce.matches ? cycle.length * 0.18 : (t * 0.0012) % cycle.length;
+    var k0 = Math.floor(pos), frac = pos - k0;
+    var A = P[cycle[k0]], B = P[cycle[(k0 + 1) % cycle.length]];
+    var dx = A[0] + (B[0] - A[0]) * frac, dy = A[1] + (B[1] - A[1]) * frac;
+    ctx.fillStyle = signs[k0] > 0 ? colors["--pos"] : colors["--neg"];
+    ctx.beginPath(); ctx.arc(dx, dy, 4.2, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = colors["--paper"]; ctx.lineWidth = 1.5; ctx.stroke();
+  }
+
+  /* ---- motion: slow turn, a little tilt toward the pointer, paused when not visible ---- */
+  var running = false, visible = true, raf = 0;
+  function frame(t) {
+    yawOffset += (targetYaw - yawOffset) * 0.06;
+    pitchOffset += (targetPitch - pitchOffset) * 0.06;
+    draw(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function update() {
+    var should = visible && !document.hidden && !reduce.matches;
+    if (should && !running) { running = true; raf = requestAnimationFrame(frame); }
+    if (!should && running) { running = false; cancelAnimationFrame(raf); }
+    if (!running) draw(lastT || 8000);
+  }
+  canvas.addEventListener("pointermove", function (ev) {
+    if (reduce.matches) return;
+    var r = canvas.getBoundingClientRect();
+    targetYaw = ((ev.clientX - r.left) / r.width - 0.5) * 2 * TILT;
+    targetPitch = ((ev.clientY - r.top) / r.height - 0.5) * 0.12;
+  });
+  canvas.addEventListener("pointerleave", function () { targetYaw = 0; targetPitch = 0; });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; update(); }).observe(canvas);
+  }
+  document.addEventListener("visibilitychange", update);
+  var onReduce = function () { update(); };
+  if (reduce.addEventListener) reduce.addEventListener("change", onReduce); else if (reduce.addListener) reduce.addListener(onReduce);
+  var scheme = window.matchMedia("(prefers-color-scheme: dark)");
+  var onScheme = function () { readColors(); if (!running) draw(lastT); };
+  if (scheme.addEventListener) scheme.addEventListener("change", onScheme); else if (scheme.addListener) scheme.addListener(onScheme);
+  if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener("resize", resize);
+  resize();
+  update();
+})();
+</script>
+</body>
+</html>
