@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fahad Alsehami: research and open code</title>
+<title>Fahad Alsehami: research</title>
 <meta name="description" content="Research by Fahad Alsehami on AI for mental health that can be checked: certified emission of language-model claims, vision transformers on oriented cell complexes, and clinical speech recognition.">
 <meta name="author" content="Fahad Alsehami">
 <link rel="canonical" href="https://fahadalsehami.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fahad Alsehami">
-<meta property="og:title" content="Fahad Alsehami: research and open code">
+<meta property="og:title" content="Fahad Alsehami: research">
 <meta property="og:description" content="Certified emission of language-model claims, vision transformers on oriented cell complexes, and clinical speech recognition.">
 <meta property="og:url" content="https://fahadalsehami.github.io/">
 <meta name="twitter:card" content="summary">
@@ -129,11 +129,6 @@ article p { margin: 0 0 0.6rem; }
   padding-left: 0.9rem;
   font-variant-numeric: lining-nums tabular-nums;
 }
-dl.code { margin: 0; }
-dl.code div { margin: 0 0 1.35rem; }
-dl.code dt { font-weight: 600; }
-dl.code dd { margin: 0.1rem 0 0; }
-dl.code dd.stack { font-style: italic; color: var(--muted); }
 .site-foot { margin-top: 4rem; padding: 1.4rem 0 3rem; border-top: 1px solid var(--rule); }
 .site-foot p { margin: 0 0 0.4rem; }
 .small { font-size: 0.95rem; color: var(--muted); }
@@ -206,26 +201,6 @@ dl.code dd.stack { font-style: italic; color: var(--muted); }
     <p>English and Arabic clinical speech: voice activity detection, diarization, per-region language identification and word-level fusion of several recognizers, with a verifier and a hallucination guard. Seven animated explainers, captioned in English and Arabic, walk through its safety numbers.</p>
     <p class="result">Lowest word error rate of 13 recognizers on English mock consultations: 11.02% on PriMock57, level with Qwen3-ASR (p&nbsp;=&nbsp;0.15) and ahead of Whisper large-v3 (13.55%). Under a medication prompt it inserted no drug names, where the prompted recognizer alone inserted 71.</p>
   </article>
-
-  <h2>Open code</h2>
-
-  <dl class="code">
-    <div>
-      <dt><a href="https://github.com/fahadalsehami/Interactive-Rag">Interactive-Rag</a></dt>
-      <dd>RDoC clinical analysis with retrieval-augmented generation: maps a presentation to RDoC constructs, retrieves passages from a Bedrock knowledge base, and has Claude write an analysis that cites them and asks a follow-up question.</dd>
-      <dd class="stack">Python, Streamlit, Amazon Bedrock</dd>
-    </div>
-    <div>
-      <dt><a href="https://github.com/fahadalsehami/multi-tasks-learning">multi-tasks-learning</a></dt>
-      <dd>Racial disparities in U.S. heart-disease mortality: CDC and census data joined by county, and a multi-task network that classifies disease and estimates age at death.</dd>
-      <dd class="stack">Python, pandas, PyTorch</dd>
-    </div>
-    <div>
-      <dt><a href="https://github.com/fahadalsehami/BoneAgePrediction">BoneAgePrediction</a></dt>
-      <dd>Age estimation from adult pubic symphysis images with ImageNet VGG16 features and a logistic-regression classifier.</dd>
-      <dd class="stack">Python, TensorFlow, scikit-learn</dd>
-    </div>
-  </dl>
 
   <h2>Writing</h2>
 
